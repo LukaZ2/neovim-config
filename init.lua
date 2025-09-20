@@ -91,7 +91,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -505,6 +505,7 @@ require("lazy").setup({
 			{ "mason-org/mason.nvim", opts = {} },
 			"mason-org/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"nvim-java/nvim-java",
 
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
@@ -729,6 +730,11 @@ require("lazy").setup({
 						},
 					},
 				},
+				-- JAVA
+				jdtls = function()
+					require("java").setup({})
+					require("lspconfig").jdtls.setup({})
+				end,
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -761,11 +767,6 @@ require("lazy").setup({
 						-- certain features of an LSP (for example, turning off formatting for ts_ls)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
-					end,
-					-- JAVA
-					jdtls = function()
-						require("java").setup({})
-						require("lspconfig").jdtls.setup({})
 					end,
 				},
 			})
@@ -1016,10 +1017,6 @@ require("lazy").setup({
 		--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
 		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
 		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-	},
-	-- JAVA
-	{
-		"nvim-java/nvim-java",
 	},
 	{'akinsho/toggleterm.nvim', version = "*", config = true},
 
