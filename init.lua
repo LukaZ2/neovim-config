@@ -199,6 +199,26 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- Custom keymaps
+vim.keymap.set('n', ',', ':<C-u>call append(line("."), repeat([""], v:count1))<CR>')
+vim.keymap.set('n', ';', ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>')
+
+vim.keymap.set('i', '<C-h>', '<Left>')
+vim.keymap.set('i', '<C-l>', '<Right>')
+vim.keymap.set('i', '<C-j>', '<Down>')
+vim.keymap.set('i', '<C-k>', '<Up>')
+
+vim.keymap.set('t', '<C-w>', [[<C-\><C-n>]])
+vim.keymap.set('t', '<C-x>', [[<C-c><C-\><C-n>:q<CR>]])
+vim.keymap.set('n', '<leader>tt', ':1ToggleTerm name=terminal<CR>')
+vim.keymap.set('n', '<leader>tg', ':2TermExec cmd=lazygit direction=float name=lazygit<CR>')
+
+vim.keymap.set('n', '<leader>nt', ':Neotree<CR>')
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 0
+vim.opt.shiftwidth = 0
+
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
