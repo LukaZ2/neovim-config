@@ -200,20 +200,20 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Custom keymaps
-vim.keymap.set('n', ',', ':<C-u>call append(line("."), repeat([""], v:count1))<CR>')
-vim.keymap.set('n', ';', ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>')
+vim.keymap.set("n", ",", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>')
+vim.keymap.set("n", ";", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>')
 
-vim.keymap.set('i', '<C-h>', '<Left>')
-vim.keymap.set('i', '<C-l>', '<Right>')
-vim.keymap.set('i', '<C-j>', '<Down>')
-vim.keymap.set('i', '<C-k>', '<Up>')
+vim.keymap.set("i", "<C-h>", "<Left>")
+vim.keymap.set("i", "<C-l>", "<Right>")
+vim.keymap.set("i", "<C-j>", "<Down>")
+vim.keymap.set("i", "<C-k>", "<Up>")
 
-vim.keymap.set('t', '<C-w>', [[<C-\><C-n>]])
-vim.keymap.set('t', '<C-x>', [[<C-c><C-\><C-n>:q<CR>]])
-vim.keymap.set('n', '<leader>tt', ':1ToggleTerm name=terminal<CR>')
-vim.keymap.set('n', '<leader>tg', ':2TermExec cmd=lazygit direction=float name=lazygit<CR>')
+vim.keymap.set("t", "<C-w>", [[<C-\><C-n>]])
+vim.keymap.set("t", "<C-x>", [[<C-c><C-\><C-n>:q<CR>]])
+vim.keymap.set("n", "<leader>tt", ":1ToggleTerm name=terminal<CR>")
+vim.keymap.set("n", "<leader>tg", ":2TermExec cmd=lazygit direction=float name=lazygit<CR>")
 
-vim.keymap.set('n', '<leader>nt', ':Neotree<CR>')
+vim.keymap.set("n", "<leader>nt", ":Neotree<CR>")
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 0
@@ -923,6 +923,12 @@ require("lazy").setup({
 		config = function()
 			---@diagnostic disable-next-line: missing-fields
 			require("tokyonight").setup({
+				-- Line Number color
+				on_highlights = function(hl, colors)
+					hl.LineNr = {
+						fg = "#fffb7b",
+					}
+				end,
 				styles = {
 					comments = { italic = false }, -- Disable italics in comments
 				},
@@ -1018,7 +1024,7 @@ require("lazy").setup({
 		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
 		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	},
-	{'akinsho/toggleterm.nvim', version = "*", config = true},
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
 	-- init.lua. If you want these files, they are in the repository, so you can just download them and
